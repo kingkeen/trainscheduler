@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Train Scheduler</title>
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
+
+</head>
+<body>
+
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-10 jumbotron jumbo bigdiv">
+		<h1><img src="assets/images/image.jpg" height="128" width="128" alt="choo choo">Train Schedule!<img src="assets/images/image.jpg" height="128" width="128" alt="choo choo"></h1>
+		<h3>Check times for your train below. Input new trains at the bottom</h3>
+	</div>
+</div>
+
+<!-- THIS DIV WILL CONTAIN THE TRAIN SCHEDULES -->
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-10 bigdiv" id="trains"><h4><strong>Current Train Schedule</strong></h4>
+		<table class="traininfo table table-hover" id="train-sched">
+			<thead>
+				<tr>
+					<th>Train Name</th>
+					<th>Destination</th>
+					<th>Frequency (min)</th>
+					<th>Next Arrival</th>
+					<th>Minute Away</th>
+				</tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+
+<!-- THIS DIV WILL CONTAIN THE FORM TO ADD TRAINS -->
+<div class="row">
+	<div class="col-md-1">
+	</div>
+	<div class="col-md-10 trainform bigdiv"><h4><strong>Add Train</strong></h4>
+		<div class="traininfo">
+			<form id="trainForm">
+				<label form="addTrain"></label>
+				<p>Train Name</p>
+				<input type="text" id="trainName">
+				<p>Destination</p>
+				<input type="text" id="destination">
+				<p>First Train's time (military time)</p>
+				<input type="text" id="firstTime">
+				<p>Train's Frequency (min)</p>
+				<input type="text" id="frequency"><br><br>
+				<input type="submit" id="newSubmission" class="btn-md btn-primary">
+			</form>
+		</div>
+		<!-- THIS IS SUPPOSED TO FLOAT LEFT OF THE FORM -->
+		<!-- <div class="col-sm-9 pic"><img src="assets/images/traingears.jpg" width="50%" height="50%"> -->
+		<!-- </div> -->
+	</div>
+</div>
+
+<script src="assets/javascript/javascript.js"></script>
+
+</body>
+</html>
