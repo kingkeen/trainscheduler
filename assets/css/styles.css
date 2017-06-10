@@ -15,7 +15,9 @@ h3 {
 	background: white;
 	margin: 10px;
 	padding: 5px;
-}
+	border-style: solid;
+/*	position: left;
+*/}
 
 .trainform {
 	background: lightgrey;
@@ -40,4 +42,10 @@ p {
 }
 
 .pic {
+	border-style: solid;
+	background-image: url("../images/traingears.jpg");
+	float: right;
+	height: 350px;
+	margin: 0px 0px 15px 10px;
 }
+
