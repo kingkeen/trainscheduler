@@ -14,6 +14,10 @@
 
 	<link rel="stylesheet" type="text/css" href="assets/css/styles.css">
 
+	<script src="https://www.gstatic.com/firebasejs/4.1.2/firebase.js"></script>
+
+	<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
+
 </head>
 <body>
 
@@ -34,12 +38,17 @@
 		<table class="traininfo table table-hover" id="train-sched">
 			<thead>
 				<tr>
-					<th>Train Name</th>
-					<th>Destination</th>
+					<th>Train Origin Station</th>
+					<th>Train Final Destination</th>
 					<th>Frequency (min)</th>
-					<th>Next Arrival</th>
-					<th>Minute Away</th>
+					<th>Next Arrival at this station</th>
+					<th>Minutes Away</th>
 				</tr>
+					<td>LA</td>
+					<td>Seattle</td>
+					<td>45</td>
+					<td>10:05</td>
+					<td>13</td>
 			</thead>
 			<tbody>
 			</tbody>
@@ -54,15 +63,25 @@
 	<div class="col-md-10 trainform bigdiv"><h4><strong>Add Train</strong></h4>
 		<div class="traininfo col-sm-3">
 			<form id="trainForm">
-				<label form="addTrain"></label>
-				<p>Train Name</p>
-				<input type="text" id="trainName">
-				<p>Destination</p>
-				<input type="text" id="destination">
-				<p>First Train's time (military time)</p>
-				<input type="text" id="firstTime">
-				<p>Train's Frequency (min)</p>
-				<input type="text" id="frequency"><br><br>
+				<div class="form-group">
+					<label for="train-origin">Train Origin Station</label>
+					<input type="text" id="train-origin" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="train-final-destination">Train Final Destination</label>
+					<input type="text" id="train-destination" class="form-control">
+				</div>
+
+				<div class="form-group">
+					<label for="train-start-time">Train's start time (military time)</label>
+					<input type="text" id="train-firstTime" class="form-control">
+				</div>
+				<div class="form-group">
+					<label for="train-frequency">Train's Frequency (min)</label>
+					<input type="text" id="train-frequency" class="form-control">
+				</div>
+
 				<input type="submit" id="newSubmission" class="btn-md btn-primary">
 			</form>
 		</div>
