@@ -18,6 +18,8 @@ var config = {
 firebase.initializeApp(config);
 var database = firebase.database();
 
+var minRemainder = 0;
+
 // listens for the train submit button
 $("#newSubmission").on("click", function(event) {
 	event.preventDefault();
@@ -75,15 +77,76 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 	console.log("train-firstTime: ", startTime);
 	console.log("train-frequency: ", trainFreq);
 
+// var now = moment().format('LT');
+// var almostNow = now.add(10, 'minutes').format('LT');
+// console.log(almostNow);
+
+// console.log("time now : ", now);
+
+// code for the minutes until the next train
+	var differenceTimes = moment().diff(moment.unix(startTime), "minutes");
+    var tRemainder = moment().diff(moment.unix(startTime), "minutes") % trainFreq;
+    var tMinutes = trainFreq - tRemainder;
+
+    var nextArrival = tRemainder + moment().format('HH:mm');
+
+// Sends the information to the table within the HTML
+	$("#train-sched > tbody").append("<tr><td>" + trainOrigin + "</td><td>" + trainDest + "</td><td>" +
+	trainFreq + "</td><td>"+ nextArrival + "</td><td>" + tMinutes + "</td></tr>");
+
+}, function (errorObject) {
+	console.log("The read failed: " + errorObject.code);
+
+});
+
+
+// TIME FUNCTION FOR NEXT MINUTES
+
+// function nextArrival (startTime, freq) {
+// 	// current time for user
+// 	var now = moment().format('HH:mm');
+	
+// 	// starting train time
+// 	var starter = now.split(':').map(function(val) {
+// 		return parseInt(val);
+// 	});
+
+// 	// current train time
+// 	var currArrival = startTime.split(':').map(function(val) {
+// 		return parseInt(val);
+// 	});
+
+// 	// converts starting train time to minutes
+// 	var startTotalMin = starter[0]*60 + starter[1];
+// 	// converts current train time to minutes
+// 	var currentTotalMin = currArrival[0]*60 + currArrival[1];
+// 	// difference in minutes 
+// 	minRemainder = (currentTotalMin + freq) % freq;
+// 	console.log("minutes to next train: ", minRemainder);
+
+// 	return (minRemainder);
+
+// }
+
+
+// var minRemaining = 
+
+
+// console.log("minutes to next train: ", minRemaining)
 
 //FIX ALL THE TIMES HERE WITH MOMENT JS 
 
+	// var conversion = 
 
-	$("#train-sched > tbody").append("<tr><td>" + trainOrigin + "</td><td>" + trainDest + "</td><td>" +
-	startTime + "</td><td>"+ startTime + "</td><td>" + trainFreq + "</td></tr>");
+	// var diffTime
+
+	// var minRemaining
+
+	// var nextTrain 
+
+	// var nextTrainTime
 
 
-});
 
 
 // Create variable to take the string of information from the submit. 
