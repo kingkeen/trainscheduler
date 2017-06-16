@@ -84,15 +84,42 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
 // console.log("time now : ", now);
 
 // code for the minutes until the next train
-	var differenceTimes = moment().diff(moment.unix(startTime), "minutes");
-    var tRemainder = moment().diff(moment.unix(startTime), "minutes") % trainFreq;
-    var tMinutes = trainFreq - tRemainder;
+	// var differenceTimes = moment().diff(moment.unix(startTime), "minutes");
+ //    var tRemainder = moment().diff(moment.unix(startTime), "minutes") % trainFreq;
+ //    var tMinutes = trainFreq - tRemainder;
 
-    var nextArrival = tRemainder + moment().format('HH:mm');
+ //    var nextArrival = tRemainder + moment().format('HH:mm');
+
+
+ 	var firstTimeConvert = moment(startTime, "hh:mm").subtract(1, "years");
+ 	console.log("converted first train time: ", firstTimeConvert);
+
+ 	var now = moment();
+ 	console.log("Current Time: " + moment(now).format("hh:mm"));
+
+ 	//difference between times
+ 	var diffTime = moment().diff(moment(firstTimeConvert), "minutes");
+ 	console.log("difference in time: ", diffTime);
+
+ 	// time till next train - remainder
+ 	var tMinutes = diffTime % trainFreq;
+ 	console.log("minutes remainder: ", tMinutes);
+
+ 	// minutes until next train
+ 	var tMinutesTrain = trainFreq - tMinutes;
+ 	console.log("minutes to next train: ", tMinutesTrain);
+
+ 	// next train time
+ 	var nextArrival1 = moment().add(tMinutesTrain, "minutes");
+ 	console.log("Arrive time: " + moment(nextArrival1).format("hh:mm"));
+
+ 	// Prettyfied time for display
+ 	var nextArrival = moment(nextArrival1).format("hh:mm");
+
 
 // Sends the information to the table within the HTML
 	$("#train-sched > tbody").append("<tr><td>" + trainOrigin + "</td><td>" + trainDest + "</td><td>" +
-	trainFreq + "</td><td>"+ nextArrival + "</td><td>" + tMinutes + "</td></tr>");
+	trainFreq + "</td><td>"+ nextArrival + "</td><td>" + tMinutesTrain + "</td></tr>");
 
 }, function (errorObject) {
 	console.log("The read failed: " + errorObject.code);
