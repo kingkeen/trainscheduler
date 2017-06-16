@@ -37,7 +37,7 @@ $("#newSubmission").on("click", function(event) {
 		origin: trainOrigin,
 		trainDestination: trainDest,
 		startingTime: startTime,
-		frequency: trainFreq
+		freq: trainFreq
 	};
 
 	// pushes to firebase the new train input
@@ -58,6 +58,32 @@ $("#newSubmission").on("click", function(event) {
 
 });
 
+// adds firebase event to add trains to database and a row of HTML for the entry
+
+database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+	
+	console.log(childSnapshot.val());
+
+	// stores from variables from database
+	var trainOrigin = childSnapshot.val().origin;
+	var trainDest = childSnapshot.val().trainDestination;
+	var startTime = childSnapshot.val().startingTime;
+	var trainFreq = childSnapshot.val().freq;
+
+	console.log("train-origin: ", trainOrigin);
+	console.log("train-destination: ", trainDest);
+	console.log("train-firstTime: ", startTime);
+	console.log("train-frequency: ", trainFreq);
+
+
+//FIX ALL THE TIMES HERE WITH MOMENT JS 
+
+
+	$("#train-sched > tbody").append("<tr><td>" + trainOrigin + "</td><td>" + trainDest + "</td><td>" +
+	startTime + "</td><td>"+ startTime + "</td><td>" + trainFreq + "</td></tr>");
+
+
+});
 
 
 // Create variable to take the string of information from the submit. 
